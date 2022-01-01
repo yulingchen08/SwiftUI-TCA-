@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct TCADemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CounterView(store: Store(initialState: Counter(),
+                                     reducer: counterReducer,
+                                     environment: /*CounterEnvironment(generateRandom: { Int.random(in: $0) })*/
+                                        .live
+                                    ))
         }
     }
 }
